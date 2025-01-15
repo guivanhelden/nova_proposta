@@ -1,0 +1,17 @@
+import sys
+import json
+
+def main():
+    # Recebe os dados do workflow
+    data = sys.argv[1]
+    print(f"Dados recebidos no Python: {data}")
+    
+    # Converte string JSON para dicionário Python
+    try:
+        json_data = json.loads(data)
+        print(f"Dados processados: {json_data}")
+    except json.JSONDecodeError:
+        print("Dados não estão em formato JSON")
+
+if __name__ == "__main__":
+    main()
