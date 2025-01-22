@@ -1,7 +1,49 @@
+acessar menu
 Clic > //*[@id="menu_propostas"]
-Clic >
-Clic >
-Clic >
-Clic >
-Clic >
-Clic >
+Clic > //*[@id="pro_novas"]
+Clic > //*[@id="sub_novas"]/a[1] (PF) / //*[@id="sub_novas"]/a[2] (PJ)
+
+Campos do imput
+
+1 aba acordeom >>> Proposta
+
+Administradora (menu suspenso) > //*[@id="cod_administradora"] /option value > {id_administradora}
+Operadora (menu suspenso) > //*[@id="cod_administradora"] /option value > {id_operadora} 
+Modalidade (menu suspenso) > //*[@id="cod_diferencial"] /option value > {id_operadora}
+Proposta > //*[@id="numero_proposta"] > {proposta}
+CNPJ > //*[@id="cnpj"]
+Razão Social > //*[@id="razao_social"]
+
+2 aba acordeom >>> Venda > //*[@id="ui-accordion-accordion-header-1"]
+
+Corretor > class="ui-autocomplete-input" > //*[@id="name_corretor"] > {id_corretor} (TAB)
+Gerente > Preenche com referencia ao corretor
+Supervisor > Preenche com referencia ao corretor
+Parceiro > Preenche com referencia ao corretor
+Distribuidora > //*[@id="name_corretor"] (caso tenha) //*[@id="cod_distribuidora"] 
+
+3 aba acordeom >>> datas > //*[@id="ui-accordion-accordion-header-2"]
+
+Data Venda >//*[@id="data_venda"] > {data_venda}
+Data Vencimento > //*[@id="vencimento"] > {vencimento}
+Data Cadastro > //*[@id="data_cadastro"] > {data_cadastro}
+Data Vigência >  //*[@id="data_vigencia"] > {data_vigencia}
+
+4 aba acordeom >>> Valores > //*[@id="ui-accordion-accordion-header-3"]
+
+
+Quantidade Vidas > //*[@id="vidas_saude"] > {qta_vidas_saude}
+mensalidade Saude > //*[@id="mensalidade_normal_saude"] > {mensalidade}
+taxa saude > //*[@id="taxa_saude"] > {taxa_saude} 
+iof_saude > //*[@id="iof_saude"] > {iof_saude}
+
+//*[@id="vidas_dental"] 
+//*[@id="mensalidade_normal_dental"]
+//*[@id="taxa_dental"]
+//*[@id="iof_dental"]
+
+
+Quem paga o boleto da primeira > //*[@id="comissao_primeira"] (<option value="P">Boleto pago pelo Corretor) ou <option value="C">Boleto pago pela VAN HELDEN CORRETORA (não gera comissão na confirmação))
+
+
+Salvar = //*[@id="salvar01"]
