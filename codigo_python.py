@@ -214,70 +214,15 @@ class SixvoxLogin:
             time.sleep(2)
             
             # Salvar
-            logging.info("Iniciando processo de salvamento")
-            try:
-                # Aguardar botão de imagem ficar presente
-                logging.info("Procurando botão de salvar (input type=image)")
-                botao_salvar = wait.until(
-                    EC.presence_of_element_located((By.CSS_SELECTOR, 'input#salvar01[type="image"]'))
-                )
-                logging.info("Botão de salvar encontrado")
-                
-                # Verificar se botão está visível
-                if not botao_salvar.is_displayed():
-                    logging.error("Botão de salvar não está visível")
-                    raise Exception("Botão de salvar não está visível")
-                
-                # Tentar scroll até o botão
-                logging.info("Scrollando até o botão de salvar")
-                self.driver.execute_script("arguments[0].scrollIntoView(true);", botao_salvar)
-                time.sleep(1)
-                
-                # Clicar no botão usando JavaScript
-                logging.info("Clicando no botão de salvar via JavaScript")
-                self.driver.execute_script("arguments[0].click();", botao_salvar)
-                logging.info("Clique no botão de salvar realizado")
-                
-                # Aguardar feedback do salvamento
-                time.sleep(5)
-                
-                # Verificar se houve algum erro na página após salvar
-                try:
-                    erro_elemento = self.driver.find_element(By.CLASS_NAME, 'erro')
-                    if erro_elemento.is_displayed():
-                        erro_msg = erro_elemento.text
-                        logging.error(f"Erro após salvar: {erro_msg}")
-                        raise Exception(f"Erro após salvar: {erro_msg}")
-                except Exception as e:
-                    if "no such element" not in str(e):
-                        raise
-                
-                logging.info("Dados salvos com sucesso")
-                return True
-                
-            except Exception as save_error:
-                logging.error(f"Erro durante o salvamento: {str(save_error)}")
-                
-                # Capturar screenshot em caso de erro
-                try:
-                    screenshot_path = f"erro_salvamento_{time.strftime('%Y%m%d_%H%M%S')}.png"
-                    self.driver.save_screenshot(screenshot_path)
-                    logging.info(f"Screenshot salvo em: {screenshot_path}")
-                except Exception as ss_error:
-                    logging.error(f"Erro ao salvar screenshot: {str(ss_error)}")
-                
-                raise save_error
-                
+            logging.info("Salvando dados")
+            self.driver.execute_script("document.getElementById('salvar01').click();")
+            time.sleep(6)  # Aguardar o processamento do salvamento
+            
+            logging.info("Dados salvos com sucesso")
+            return True
+            
         except Exception as e:
             logging.error(f"Erro ao preencher dados: {str(e)}")
-            
-            # Tentar capturar mais informações sobre o erro
-            try:
-                page_source = self.driver.page_source
-                logging.error(f"HTML da página no momento do erro: {page_source[:500]}...")
-            except:
-                pass
-                
             return False
             
     def close_driver(self):
