@@ -1,20 +1,8 @@
 name: Sixvox Automation
 
 on:
-  workflow_dispatch:
-    inputs:
-      nome:
-        description: 'Nome do cliente'
-        required: true
-        type: string
-      telefone:
-        description: 'Telefone do cliente'
-        required: true
-        type: string
-      email:
-        description: 'Email do cliente'
-        required: true
-        type: string
+  repository_dispatch:
+    types: [automation_trigger]
 
 jobs:
   executar-automacao:
@@ -24,9 +12,9 @@ jobs:
     env:
       LOGIN: ${{ secrets.LOGIN }}
       SENHA: ${{ secrets.SENHA }}
-      NOME: ${{ github.event.inputs.nome }}
-      TELEFONE: ${{ github.event.inputs.telefone }}
-      EMAIL: ${{ github.event.inputs.email }}
+      NOME: ${{ github.event.client_payload.nome }}
+      TELEFONE: ${{ github.event.client_payload.telefone }}
+      EMAIL: ${{ github.event.client_payload.email }}
     
     steps:
       - uses: actions/checkout@v4
