@@ -1,0 +1,7 @@
+Clic > //*[@id="menu_propostas"]
+Clic >
+Clic >
+Clic >
+Clic >
+Clic >
+Clic >
