@@ -12,9 +12,32 @@ jobs:
     env:
       LOGIN: ${{ secrets.LOGIN }}
       SENHA: ${{ secrets.SENHA }}
-      NOME: ${{ github.event.client_payload.nome }}
+      NOME_CORRETOR: ${{ github.event.client_payload.nome_corretor }}
+      NOME_SOCIO: ${{ github.event.client_payload.nome_socio }}
+      GRADE: ${{ github.event.client_payload.grade }}
       TELEFONE: ${{ github.event.client_payload.telefone }}
       EMAIL: ${{ github.event.client_payload.email }}
+      UNIDADE: ${{ github.event.client_payload.unidade }}
+      EQUIPE: ${{ github.event.client_payload.equipe }}
+      DATA_ENTRADA: ${{ github.event.client_payload.data_entrada }}
+      ENDERECO: ${{ github.event.client_payload.endereco }}
+      BAIRRO: ${{ github.event.client_payload.bairro }}
+      CIDADE: ${{ github.event.client_payload.cidade }}
+      CEP: ${{ github.event.client_payload.cep }}
+      ESTADO: ${{ github.event.client_payload.estado }}
+      DATA_NASCIMENTO: ${{ github.event.client_payload.data_nascimento }}
+      CPF: ${{ github.event.client_payload.cpf }}
+      CNPJ: ${{ github.event.client_payload.cnpj }}
+      RG: ${{ github.event.client_payload.rg }}
+      BANCO: ${{ github.event.client_payload.banco }}
+      CODIGO_BANCO: ${{ github.event.client_payload.codigo_banco }}
+      AGENCIA: ${{ github.event.client_payload.agencia }}
+      CONTA: ${{ github.event.client_payload.conta }}
+      TIPO_CONTA: ${{ github.event.client_payload.tipo_conta }}
+      TITULAR_CONTA: ${{ github.event.client_payload.titular_conta }}
+      TITULAR_CPF: ${{ github.event.client_payload.titular_cpf }}
+      CHAVE_PIX: ${{ github.event.client_payload.chave_pix }}
+      TIPO_PIX: ${{ github.event.client_payload.tipo_pix }}
     
     steps:
       - uses: actions/checkout@v4
