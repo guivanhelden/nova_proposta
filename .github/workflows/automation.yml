@@ -1,25 +1,35 @@
-name: Python Automation
+name: Sixvox Automation
 on:
   workflow_dispatch:
     inputs:
-      data:
-        description: 'Dados recebidos do n8n'
+      login:
+        description: 'Login do Sixvox'
+        required: true
+        type: string
+      senha:
+        description: 'Senha do Sixvox'
         required: true
         type: string
 
 jobs:
-  run-automation:
+  run-sixvox:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout código
+      - name: Checkout do código
         uses: actions/checkout@v3
-
+        
       - name: Configurar Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
-
-      - name: Executar script
+          
+      - name: Instalar dependências
         run: |
-          echo "Dados recebidos: ${{ github.event.inputs.data }}"
-          python seu_script.py "${{ github.event.inputs.data }}"
+          python -m pip install --upgrade pip
+          pip install selenium webdriver-manager
+          
+      - name: Executar script
+        env:
+          LOGIN: ${{ github.event.inputs.login }}
+          SENHA: ${{ github.event.inputs.senha }}
+        run: python codigo_python.py
