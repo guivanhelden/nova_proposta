@@ -216,7 +216,7 @@ class SixvoxLogin:
             # Salvar
             logging.info("Salvando dados")
             self.driver.execute_script("document.getElementById('salvar01').click();")
-            time.sleep(6)  # Aguardar o processamento do salvamento
+            time.sleep(15)  # Aguardar o processamento do salvamento
             
             logging.info("Dados salvos com sucesso")
             return True
